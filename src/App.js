@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
+import CompShowBlogs from './blog/ShowBlogs';
+import CompCreateBlog from './blog/CreateBlog';
+import CompEditBlog from './blog/EditBlog';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Blog de Recetas</h1>        
       </header>
+      <BrowserRouter>
+        <Routes>
+            <Route path='/' element={ <CompShowBlogs />} />
+            <Route path='/create' element={ <CompCreateBlog />} />
+            <Route path='/edit/:id' element={ <CompEditBlog />} />
+            
+        </Routes>
+      </BrowserRouter>
+      
+      
     </div>
   );
 }

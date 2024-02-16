@@ -1,3 +1,4 @@
+/* ShowBlogs */
 .App {
   text-align: center;
 }
@@ -14,18 +15,28 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  
+  background-image: url(../public/img/fondo.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+ 
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-header h1{
+  color: white;
+  text-shadow: 2px 2px 1px #000000;
+  opacity: 98%;
+  font-size: 50px;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +46,65 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.col-md-4{
+  height: 500px;
+}
+
+.img-container{
+  max-width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.card-img-top{
+  max-width: 100%;
+  min-height: 255px;
+  max-height: 255px;
+  width: auto;
+  height: auto;
+  display: inline-block;
+ 
+  
+}
+
+/* CreateBlogs */
+.card-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: -225px;
+  margin: auto;
+  padding-bottom: 100px;
+}
+
+/* CreateBlogs */
+.create .form-control{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.alert-message-create{
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+/* EditBlogs */
+.edit .form-control{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Modal */
+.info-card{
+  text-align: center;
 }
