@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# 🍲 ¡Bienvenido a Mi Rincón de Recetas y Código! 🍰
+¡Hola, amante de la cocina y del código! 👩‍🍳👨‍🍳 Soy Carla, la mente y el paladar detrás de este blog donde las recetas y el código se mezclan en un festín de creatividad. 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🧁 Sobre Mi Blog
+Aquí, en mi pequeño universo digital, cocino con:
 
-## Available Scripts
+**React, HTML, CSS y JavaScript**: Mis ingredientes esenciales para crear estas deliciosas páginas web.
 
-In the project directory, you can run:
+**Bootstrap**: Mi "toque especial" para darle un aspecto elegante y apetitoso a la interfaz.
 
-### `npm start`
+**MySQL**: Mi despensa virtual donde guardo todas las recetas y datos del blog.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Express**: Mi "receta secreta" para manejar el backend, gestionar las solicitudes y conectarme con la base de datos.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🍽️ Cómo Puedes Unirte a la Cocina
+¿Listo para participar en esta aventura culinaria y de código? ¡Aquí te explico cómo hacerlo en pocos pasos!
 
-### `npm test`
+## 🛠️ Prerrequisitos
+Antes de sumergirte en la magia de mi cocina digital, asegúrate de tener instalado:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Node.js: [Descárgalo aquí.](https://nodejs.org/en/download)
 
-### `npm run build`
+### 🍲 Instalación del Frontend
+1. Clona Mi Recetario Frontend:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/tu-usuario/mi-blog-de-recetas.git
+cd project-sql/my-app
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Instala los Ingredientes Necesarios y Comienza a Cocinar:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+npm start
+```
 
-### `npm run eject`
+3. ¡Y voilà! Tu frontend estará listo para saborear en http://localhost:3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🍳 ``Instalación del Backend``
+4. Vuelve a la Raíz del Proyecto:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd ..
+````
+5. Clona Mi Recetario Backend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd node
+npm install
+nodemon app
+````
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+¡Y sentirás el aroma del backend con el mensaje "Hola Mundo" en http://localhost:5000!
 
-## Learn More
+## 🍕 Únete a Mí
+¿Tienes una receta especial que quieres compartir? ¡Únete a mí y añade tu toque personal a nuestro menú! 🎉
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌐 Enlace a Mi Figma
+¿Quieres echar un vistazo a los bocetos y diseños detrás de las delicias visuales de este blog? ¡Aquí tienes el enlace a mi tablero en Figma!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🎨 [Mi Tablero en Figma](https://www.figma.com/file/8q9JEJ5AZyAxT1YS1iIFcL/Blog-Recetas?type=design&node-id=0%3A1&mode=design&t=jqVfQR1PwcHwxrwR-1)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+¡Espero que disfrutes tanto como yo este viaje entre sabores y líneas de código! 🚀👩‍🍳👨‍🍳
