@@ -30,8 +30,10 @@ const CompShowBlogs = () => {
 
 
     useEffect( ()=>{
-        getBlogs()
+        getBlogs()              
     },[])
+
+    
 
     //Mostrar todos los blogs
     const getBlogs = async () => {
@@ -62,7 +64,9 @@ const CompShowBlogs = () => {
 
     return(
         <section className='mt-5'>
+
             <main className='container'>
+                
                 <div className='row'>
                     {blogs.map((blog) => (
                         <div key={blog.id} className='col-md-4 mb-4'>
@@ -135,11 +139,6 @@ const CompShowBlogs = () => {
                                 
                             
                             </article>
-                        ) : (
-                            <div>
-                            <p>No se ha seleccionado ningún blog.</p>
-                            <button onClick={CloseModal}>Cerrar</button>
-                            </div>
                         )}
                     </section>
                     
