@@ -79,6 +79,10 @@
 }
 
 /* CreateBlogs */
+.create{
+  margin-bottom: 20px;
+}
+
 .create .form-control{
   width: 80%;
   display: flex;
@@ -90,6 +94,13 @@
 .alert-message-create{
   width: 50%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.button-modal{
+  
   display: flex;
   justify-content: center;
   margin: auto;

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../App.css'
+import Modal from 'react-modal'
 
 const URI = 'http://localhost:8000/blogs/'
 
@@ -13,6 +14,14 @@ const CompCreateBlog = () => {
     const [imageUrl, setImageUrl] = useState('')
     const [error, setError] = useState('') // validacion
     const navigate = useNavigate()    
+    
+    //Abrir o cerrar un modal
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedBlog, setSelectedBlog] = useState(null);
+    console.log(selectedBlog)
+
+   
+     
     
     //procedimiento guardar
     const store = async (e) => {
@@ -47,7 +56,8 @@ const CompCreateBlog = () => {
 
     return (
         <section className='create mt-5'>
-           <h3>Añadir nueva Receta</h3>
+            <main>
+            <h3>Añadir nueva Receta</h3>
            <form onSubmit={store}>
                 <div className='mb-3 mt-3'>
                     <label className='form-label fs-6'>Nombre de la receta</label>
@@ -100,9 +110,55 @@ const CompCreateBlog = () => {
                     /> 
                                     
                  </div>
-                 <button type='submit' className='btn btn-info'>Añadir</button>                  
+                 <button onClick={() => {
+                    console.log('Abriendo modal de gracias')
+                    setModalIsOpen(true)}} 
+                 type='submit' 
+                 className='btn btn-info'
+                 data-bs-toggle="modal" 
+                 data-bs-target="#staticBackdrop">
+                    Añadir
+                    </button>    
+
                  {error && <div className="alert-message-create alert alert-danger mt-2">{error}</div>}
+           
            </form>
+            </main>
+
+            {/* Modal Receta Añadida */}
+                <Modal isOpen={modalIsOpen} onRequestClose={() => {
+                    setModalIsOpen(false)}} 
+                    style={{ content: {
+                        maxWidth: '450px',
+                        height: '180px',
+                        top: '50%',
+                        margin: 'auto',
+                        marginTop: '20px',
+                        transform: 'translateY(-50%)',
+                        className: 'modal fade',
+                        id:'staticBackdrop',
+                        databsbackdrop:'static',
+                         databskeyboard:'false',
+                          tabindex:-'1',
+                           arialabelledby:'staticBackdropLabel', ariahidden:'true'
+                    }}}>
+                        <article>
+                            <button className='btn-close' onClick={() => { 
+                                console.log('Cerrando modal desde el botón')
+                                setModalIsOpen(false)}}>
+                                    
+                                </button>
+                            <h3 className='mt-3 text-center display-7 fs-5'>
+                                ¡Receta añadida!🎉</h3>
+
+                            <div className='button-modal mt-3'>
+                            <button type="button" className="button-thanks btn btn-info" onClick={() => setModalIsOpen(false)}  aria-label="Ver recetas">Ver recetas</button>
+                            </div>    
+                            
+                        </article>
+            </Modal>
+
+           
         </section>
     )
 }
