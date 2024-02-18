@@ -1,166 +1,194 @@
-import axios from 'axios'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../App.css'
-import Modal from 'react-modal'
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
+import Modal from 'react-modal';
 
-const URI = 'http://localhost:8000/blogs/'
+const URI = 'http://localhost:8000/blogs/';
+
+// Establecemos la referencia para React Modal
+Modal.setAppElement('#root');
 
 const CompCreateBlog = () => {
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [ingredients, setIngredients] = useState('')
-    const [instructions, setInstructions] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
-    const [error, setError] = useState('') // validacion
-    const navigate = useNavigate()    
-    
-    //Abrir o cerrar un modal
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [ingredients, setIngredients] = useState('');
+    const [instructions, setInstructions] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [error, setError] = useState(''); // validacion
+    const [success, setSuccess] = useState(false); // mensaje receta añadida
+    const navigate = useNavigate();
+
+    // Controla la visibilidad del modal
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedBlog, setSelectedBlog] = useState(null);
-    console.log(selectedBlog)
 
-   
-     
-    
-    //procedimiento guardar
+    // función para abrir el modal solo si no hay errores
     const store = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-
-        //Validaciones
+        // Validaciones
         if (!title || !content || !ingredients || !instructions || !imageUrl) {
-            setError('Todos los campos son obligatorios')
-            return; // Evitar enviar la solicitud si hay errores
+            setError('Todos los campos son obligatorios');
+            return; // Evita enviar la solicitud si hay errores
         }
 
         // Validar la ruta de la imagen
         if (!imageUrl.startsWith('https://')) {
-            setError('Ruta de imagen no válida. Debe empezar con "https://"')
+            setError('Ruta de imagen no válida. Debe empezar con "https://"');
             return;
         }
 
         // Limpiar el error en caso de éxito
         setError('');
 
-        //Si no hay errores se envia
+        try{
+
+        // Si no hay errores se envía
         await axios.post(URI, {
-            title: title, 
+            title: title,
             content: content,
             ingredients: ingredients,
             instructions: instructions,
             imageUrl: imageUrl
-        })
-        navigate('/');
-    }
+        });
+
+        // Limpia los campos después de enviar
+        setTitle('');
+        setContent('');
+        setIngredients('');
+        setInstructions('');
+        setImageUrl('');
+
+       
+
+     // Muestra el mensaje de éxito
+     setSuccess(true);
+
+     // Redirige a la página principal después de 3 segundos
+            setTimeout(() => {
+                setSuccess(false);
+                navigate('/');
+            }, 3000);
+        } catch (error) {
+            console.error('Error al guardar la receta:', error);
+            setError('Hubo un error al guardar la receta. Inténtalo de nuevo.');
+        }
+
+    };
 
     return (
         <section className='create mt-5'>
             <main>
-            <h3>Añadir nueva Receta</h3>
-           <form onSubmit={store}>
-                <div className='mb-3 mt-3'>
-                    <label className='form-label fs-6'>Nombre de la receta</label>
-                    <input
-                        value={title}
-                        onChange={ (e)=> setTitle(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    />
-                 </div>   
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Tipo de Receta</label>
-                    <textarea
-                        value={content}
-                        placeholder='Ej. Ensalada'
-                        onChange={ (e)=> setContent(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    />                 
-                 </div>  
+                <h3>Añadir nueva Receta</h3>
+                <form onSubmit={store}>
+                    <div className='mb-3 mt-3'>
+                        <label className='form-label fs-6'>Nombre de la receta</label>
+                        <input
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            type='text'
+                            className='form-control'
+                        />
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Tipo de Receta</label>
+                        <textarea
+                            value={content}
+                            placeholder='Ej. Ensalada'
+                            onChange={(e) => setContent(e.target.value)}
+                            type='text'
+                            className='form-control'
+                        />
+                    </div>
 
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Ingredientes</label>
-                    <textarea
-                        value={ingredients}
-                        onChange={ (e)=> setIngredients(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    />                 
-                 </div>
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Ingredientes</label>
+                        <textarea
+                            value={ingredients}
+                            onChange={(e) => setIngredients(e.target.value)}
+                            type='text'
+                            className='form-control'
+                        />
+                    </div>
 
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Instrucciones</label>
-                    <textarea
-                        value={instructions}
-                        onChange={ (e)=> setInstructions(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    />                 
-                 </div>
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Instrucciones</label>
+                        <textarea
+                            value={instructions}
+                            onChange={(e) => setInstructions(e.target.value)}
+                            type='text'
+                            className='form-control'
+                        />
+                    </div>
 
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Imagen</label>
-                    <textarea
-                        value={imageUrl}
-                        placeholder='Pega aquí la ruta de tu imagen'
-                        onChange={ (e)=> setImageUrl(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    /> 
-                                    
-                 </div>
-                 <button onClick={() => {
-                    console.log('Abriendo modal de gracias')
-                    setModalIsOpen(true)}} 
-                 type='submit' 
-                 className='btn btn-info'
-                 data-bs-toggle="modal" 
-                 data-bs-target="#staticBackdrop">
-                    Añadir
-                    </button>    
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Imagen</label>
+                        <textarea
+                            value={imageUrl}
+                            placeholder='Pega aquí la ruta de tu imagen'
+                            onChange={(e) => setImageUrl(e.target.value)}
+                            type='text'
+                            className='form-control'
+                        />
+                    </div>
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                           store(e);
+                        }}
+                        type='button'  // Cambié el tipo a 'button' para evitar el envío del formulario
+                        className='btn btn-info'
+                    >
+                        Añadir
+                    </button>
 
-                 {error && <div className="alert-message-create alert alert-danger mt-2">{error}</div>}
-           
-           </form>
+                    {error && <div className='alert-message-create alert alert-danger mt-2'>{error}</div>}
+                    {success && <div className='alert-message-create alert alert-success mt-2'>¡Receta añadida! 🎉</div>}
+                </form>
             </main>
 
             {/* Modal Receta Añadida */}
-                <Modal isOpen={modalIsOpen} onRequestClose={() => {
-                    setModalIsOpen(false)}} 
-                    style={{ content: {
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={false}
+                shouldCloseOnOverlayClick={false}
+                style={{
+                    content: {
                         maxWidth: '450px',
                         height: '180px',
                         top: '50%',
                         margin: 'auto',
                         marginTop: '20px',
                         transform: 'translateY(-50%)',
-                        className: 'modal fade',
-                        id:'staticBackdrop',
-                        databsbackdrop:'static',
-                         databskeyboard:'false',
-                          tabindex:-'1',
-                           arialabelledby:'staticBackdropLabel', ariahidden:'true'
-                    }}}>
-                        <article>
-                            <button className='btn-close' onClick={() => { 
-                                console.log('Cerrando modal desde el botón')
-                                setModalIsOpen(false)}}>
-                                    
-                                </button>
-                            <h3 className='mt-3 text-center display-7 fs-5'>
-                                ¡Receta añadida!🎉</h3>
+                        // Otros estilos según sea necesario
+                    },
+                }}
+            >
+                {/* Contenido del modal de éxito */}
+                <article>
+                    <button
+                        className='btn-close'
+                        onClick={() => {
+                            console.log('Cerrando modal desde el botón');
+                            setModalIsOpen(false);
+                        }}
+                    ></button>
+                    <h3 className='mt-3 text-center display-7 fs-5'>¡Receta añadida!🎉</h3>
 
-                            <div className='button-modal mt-3'>
-                            <button type="button" className="button-thanks btn btn-info" onClick={() => setModalIsOpen(false)}  aria-label="Ver recetas">Ver recetas</button>
-                            </div>    
-                            
-                        </article>
+                    <div className='button-modal mt-3'>
+                        <button
+                            type='button'
+                            className='button-thanks btn btn-info'
+                            onClick={() => setModalIsOpen(false)}
+                            aria-label='Ver recetas'
+                        >
+                            Ver recetas
+                        </button>
+                    </div>
+                </article>
             </Modal>
-
-           
         </section>
-    )
-}
+    );
+};
 
-export default CompCreateBlog
+export default CompCreateBlog;

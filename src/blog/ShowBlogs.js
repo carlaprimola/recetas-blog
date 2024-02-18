@@ -10,6 +10,7 @@ const URI = 'http://localhost:8000/blogs/'
 const CompShowBlogs = () => {
     
     const [blogs, setBlog] = useState([])
+    const [blogsLoaded, setBlogsLoaded] = useState(false); // Nuevo estado
     const [title, content, ingredients, instructions, imageUrl] = useState('')    
     
      
@@ -44,7 +45,7 @@ const CompShowBlogs = () => {
           // Verifica si res.data es un array o si hay un campo que contiene el array.
           const blogsArray = Array.isArray(res.data) ? res.data : res.data.blogs;
           setBlog(blogsArray);
-          
+          setBlogsLoaded(true) // Actualizar el estado cuando los blogs se cargan
           console.log(blogsArray)
          
 
@@ -64,7 +65,7 @@ const CompShowBlogs = () => {
 
     return(
         <section className='mt-5'>
-
+            {blogsLoaded ? ( // Verifica si los blogs se han cargado
             <main className='container'>
                 
                 <div className='row'>
@@ -95,7 +96,7 @@ const CompShowBlogs = () => {
                             
                         </div>
                     ))}
-                    <div className="row xxl card-footer" >
+                    <main className="row xxl card-footer" >
                         <div className="col-sm-6" >
                             <div className="card">
                             <div className="card-body" style={{ content: {width: '500px'}}}>
@@ -105,13 +106,16 @@ const CompShowBlogs = () => {
                             </div>
                             </div>
                         </div>
-                    </div>    
+                    </main>    
 
                     
                 </div>
             </main>
+            ) : null}
 
-            {/* Modal */}
+
+
+            {/* Modal receta */}
                 <Modal isOpen={modalIsOpen} onRequestClose={CloseModal} style={{ content: {
                      
                      maxWidth: '700px', 
@@ -139,7 +143,7 @@ const CompShowBlogs = () => {
                                 
                             
                             </article>
-                        )}
+                        ) : null}
                     </section>
                     
                 </Modal>
