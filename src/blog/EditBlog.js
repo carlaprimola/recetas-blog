@@ -52,69 +52,71 @@ const CompEditBlog = () => {
         const res = await axios.get(URI+id)
         setTitle(res.data.title)
         setContent(res.data.content)
-    }
-
+        setIngredients(res.data.ingredients || '')
+        setInstructions(res.data.instructions || '')
+        setImageUrl(res.data.imageUrl || '')
+    }  
+   
     return (
         <section className="edit mt-5">
-        <h3>Modificar Receta</h3>
-        <form onSubmit={update}>
-            <div className="mb-3 mt-3">
-                <label className="form-label fs-6">Nombre de la receta</label>
-                <input
-                    value={title}
-                    onChange={ (e)=> setTitle(e.target.value)}
-                    type="text"
-                    className="form-control"                        
-                />
-            </div>
-            <div className="mb-3">
-                <label  className="form-label">Tipo de Receta</label>
-                <textarea
-                    value={content}
-                    placeholder='Ej. Ensalada'
-                    onChange={ (e)=> setContent(e.target.value)}
-                    type="text"
-                    className="form-control"
-                />
-            </div> 
-            <div className='mb-3'>
-                     <label className='form-label fs-6'>Ingredientes</label>
-                    <textarea
-                        value={ingredients}
-                        onChange={ (e)=> setIngredients(e.target.value)} 
+            <h3>Modificar Receta</h3>
+            <form onSubmit={update}>
+                <div className="mb-3 mt-3">
+                    <label className="form-label fs-6">Nombre de la receta</label>
+                    <input
+                        value={title}
+                        onChange={ (e)=> setTitle(e.target.value)}
                         type="text"
-                        className='form-control'
-                    />                 
-                 </div>
+                        className="form-control"                        
+                    />
+                </div>
+                <div className="mb-3">
+                    <label  className="form-label">Tipo de Receta</label>
+                    <input
+                        value={content}
+                        placeholder='Ej. Ensalada'
+                        onChange={ (e)=> setContent(e.target.value)}
+                        type="text"
+                        className="form-control"
+                    />
+                </div> 
+                <div className='mb-3'>
+                        <label className='form-label fs-6'>Ingredientes</label>
+                        <textarea
+                            value={ingredients}
+                            onChange={ (e)=> setIngredients(e.target.value)} 
+                            type="text"
+                            className='form-control'
+                        />                 
+                    </div>
 
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Instrucciones</label>
-                    <textarea
-                        value={instructions}
-                        onChange={ (e)=> setInstructions(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    />                 
-                 </div>
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Instrucciones</label>
+                        <textarea
+                            value={instructions}
+                            onChange={ (e)=> setInstructions(e.target.value)} 
+                            type="text"
+                            className='form-control'
+                        />                 
+                    </div>
 
-                 <div className='mb-3'>
-                     <label className='form-label fs-6'>Imagen</label>
-                    <textarea
-                        value={imageUrl}
-                        placeholder='Pega aquí la ruta de tu imagen'
-                        onChange={ (e)=> setImageUrl(e.target.value)} 
-                        type="text"
-                        className='form-control'
-                    /> 
-                                    
-                 </div>
-                 <button type='submit' className='btn btn-info'>Añadir</button>                  
-                 {error && <div className="alert-message-create alert alert-danger mt-2">{error}</div>}           
-           
-        </form>
+                    <div className='mb-3'>
+                        <label className='form-label fs-6'>Imagen</label>
+                        <textarea
+                            value={imageUrl}
+                            placeholder='Pega aquí la ruta de tu imagen'
+                            onChange={ (e)=> setImageUrl(e.target.value)} 
+                            type="text"
+                            className='form-control'
+                        /> 
+                                        
+                    </div>
+                    <button type='submit' className='btn btn-info'>Añadir</button>                  
+                    {error && <div className="alert-message-create alert alert-danger mt-2">{error}</div>}           
+            
+            </form>
     </section>
     )
 
-}
-
-export default CompEditBlog
+};
+export default CompEditBlog 

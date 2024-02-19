@@ -78,7 +78,7 @@ const CompCreateBlog = () => {
 
     return (
         <section className='create mt-5'>
-            <main>
+            <main title='main-container'>
                 <h3>Añadir nueva Receta</h3>
                 <form onSubmit={store}>
                     <div className='mb-3 mt-3'>
