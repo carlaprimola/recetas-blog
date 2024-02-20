@@ -88,6 +88,8 @@ const CompCreateBlog = () => {
                             onChange={(e) => setTitle(e.target.value)}
                             type='text'
                             className='form-control'
+                            maxLength={5}
+                            pattern='[^>/^>]+'
                         />
                     </div>
                     <div className='mb-3'>
@@ -97,6 +99,7 @@ const CompCreateBlog = () => {
                                     value={content}
                                     onChange={(e) => setContent(e.target.value)}
                                     className='select-content form-select fs-6'
+                                    
                                 >
                                     <option selected>Elige una opción</option>
                                     <option>Ensalada</option>
@@ -118,6 +121,8 @@ const CompCreateBlog = () => {
                             onChange={(e) => setIngredients(e.target.value)}
                             type='text'
                             className='form-control'
+                            maxLength={100}
+                            pattern='[^>/^>]+'
                         />
                     </div>
 
@@ -128,6 +133,8 @@ const CompCreateBlog = () => {
                             onChange={(e) => setInstructions(e.target.value)}
                             type='text'
                             className='form-control'
+                            maxLength={300}
+                            pattern='[^>/^>]+'
                         />
                     </div>
 
@@ -139,6 +146,8 @@ const CompCreateBlog = () => {
                             onChange={(e) => setImageUrl(e.target.value)}
                             type='text'
                             className='form-control'
+                            maxLength={100}
+                            pattern='[^>/^>]+'
                         />
                     </div>
                     <button
