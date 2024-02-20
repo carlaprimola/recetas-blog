@@ -12,7 +12,7 @@ const CompShowBlogs = () => {
     const [blogs, setBlog] = useState([])
     const [blogsLoaded, setBlogsLoaded] = useState(false); // Nuevo estado
     const [title, content, ingredients, instructions, imageUrl] = useState('')    
-    
+    const [selectedCategory, setSelectedCategory] = useState(null);
      
     //Abrir o cerrar un modal
      const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -60,6 +60,9 @@ const CompShowBlogs = () => {
        getBlogs()
     }
 
+    //Categorias recetas
+    
+
    
 
 
@@ -67,9 +70,24 @@ const CompShowBlogs = () => {
         <section className='mt-5'>
             {blogsLoaded ? ( // Verifica si los blogs se han cargado
             <main className='container'>
-                
+                {/* Categorias */}
+                <h5 className='lead'>¿Qué receta buscas?</h5>
+                <div className="btn-group mb-5" role="group" aria-label="Basic outlined example">
+                    <button onClick={() => setSelectedCategory('Ensalada')} type="button" className="btn btn-outline-primary">Ensalada</button>
+                    <button onClick={() => setSelectedCategory('Vegetariana')}type="button" className="btn btn-outline-primary">Vegetariana</button>
+                    <button onClick={() => setSelectedCategory('Pescado')}type="button" className="btn btn-outline-primary">Pescado</button>
+                    <button onClick={() => setSelectedCategory('Arroz')}type="button" className="btn btn-outline-primary">Arroz</button>
+                    <button onClick={() => setSelectedCategory('Pasta')}type="button" className="btn btn-outline-primary">Pasta</button>
+                    <button onClick={() => setSelectedCategory('Salsa')}type="button" className="btn btn-outline-primary">Salsas</button>
+                    <button onClick={() => setSelectedCategory(null)}type="button" className="btn btn-outline-primary">Todas</button>
+                    </div>
+
+
+
                 <div className='row'>
-                    {blogs.map((blog) => (
+                    {blogs
+                    .filter(blog => selectedCategory ? blog.content.toLowerCase().includes(selectedCategory.toLowerCase()) : true)
+                    .map((blog) => (
                         <div key={blog.id} className='col-md-4 mb-4'>
                             <article className='card shadow-sm p-3 mb-5 bg-body rounded'>
                                 <figure className='img-container'>
@@ -96,7 +114,8 @@ const CompShowBlogs = () => {
                             
                         </div>
                     ))}
-                    <main className="row xxl card-footer" >
+                     {/* Añadir nueva receta */}
+                    <main className="row xxl card-footer card-footer m-10" >
                         <div className="col-sm-6" >
                             <div className="card">
                             <div className="card-body" style={{ content: {width: '500px'}}}>
@@ -107,9 +126,31 @@ const CompShowBlogs = () => {
                             </div>
                         </div>
                     </main>    
-
                     
                 </div>
+                 {/* Footer */}    
+                     
+                 <footer style={{ maxHeight: '100px' }} className="text-muted py-5 mb-1">
+                        <div id='footer' className="container">
+                            <div className="row align-items-center">
+                            <div className="col-md-6 d-flex align-items-start">
+                                <div>
+                                <h5 className='mb-3'>Sobre Nosotros</h5>
+                                <div className='mb-2'></div>
+                                <p className='mb-0 ml-1'>Blog de Recetas para compartir</p>
+                                </div>
+                            </div>
+                            <div className="col-md-6 d-flex align-items-start">
+                                <div>
+                                <h5 className='mb-3'>Contacto   </h5>
+                                <div className='mb-2'></div>
+                                <p className='mb-0'>📧 info@blogderecetas.com</p>
+                                <p className='mb-0'>☎ +123 456 7890</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </footer>
             </main>
             ) : null}
 

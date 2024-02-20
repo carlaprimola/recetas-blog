@@ -92,13 +92,23 @@ const CompCreateBlog = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label fs-6'>Tipo de Receta</label>
-                        <textarea
-                            value={content}
-                            placeholder='Ej. Ensalada'
-                            onChange={(e) => setContent(e.target.value)}
-                            type='text'
-                            className='form-control'
-                        />
+                        <div className='select-container'>
+                            <select
+                                    value={content}
+                                    onChange={(e) => setContent(e.target.value)}
+                                    className='select-content form-select fs-6'
+                                >
+                                    <option selected>Elige una opción</option>
+                                    <option>Ensalada</option>
+                                    <option>Pasta</option>
+                                    <option>Pescado</option>
+                                    <option>Arroz</option>
+                                    <option>Vegetariana</option>
+                                    <option>Salsas</option>
+                                    <option>Otros</option>
+                                </select>
+                        </div>
+                        
                     </div>
 
                     <div className='mb-3'>

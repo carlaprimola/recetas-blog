@@ -1,6 +1,24 @@
 /* ShowBlogs */
+body{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .App {
   text-align: center;
+}
+
+#footer{
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px 
 }
 
 .App-logo {
@@ -65,13 +83,12 @@
   width: auto;
   height: auto;
   display: inline-block;
- 
-  
+   
 }
 
-.navbar{
-  margin-top: -50px;
-  margin-bottom: 20px;
+.footer{
+  display: flex;
+  flex-direction: row;
 }
 
 /* CreateBlogs */
@@ -83,7 +100,6 @@
   padding-bottom: 100px;
 }
 
-/* CreateBlogs */
 .create{
   margin-bottom: 20px;
 }
@@ -110,6 +126,24 @@
   justify-content: center;
   margin: auto;
 }
+
+.select-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  
+}
+
+select{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50%!important;
+  max-width: 80%!important;
+}
+
+
 
 /* EditBlogs */
 .edit .form-control{
