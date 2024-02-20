@@ -169,7 +169,11 @@ const CompShowBlogs = () => {
                     <section>
                         {selectedBlog ? (
                             <article>
-                                <button className='btn-close' onClick={CloseModal}></button>
+                                <div className='buttons-edit'>
+                                    <button className='btn-close' onClick={CloseModal}></button>
+                                    <Link to={`/edit/${selectedBlog.id}`} className='btn btn-outline-primary'><i className="fas fa-edit"></i></Link>
+                                </div>
+                                
                                 <h2 className='mt-1 text-center display-7'>{selectedBlog.title}</h2>
                                 <img src={selectedBlog.imageUrl} 
                                             className='card-img-top border-top-0 rounded' 

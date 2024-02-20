@@ -158,3 +158,8 @@ select{
 .info-card{
   text-align: center;
 }
+
+.buttons-edit{
+  display: flex;
+  justify-content:space-between ;
+}
